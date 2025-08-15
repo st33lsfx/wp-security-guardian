@@ -1,0 +1,213 @@
+/* WP Security Guardian Admin Styles */
+
+.wpsg-admin-page {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.wpsg-plugin-card {
+  transition: all 0.2s ease-in-out;
+}
+
+.wpsg-plugin-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.wpsg-status-badge {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.wpsg-security-toggle {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.wpsg-security-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.wpsg-security-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 24px;
+}
+
+.wpsg-security-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .wpsg-security-slider {
+  background-color: #10b981;
+}
+
+input:checked + .wpsg-security-slider:before {
+  transform: translateX(26px);
+}
+
+.wpsg-stats-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.wpsg-help-card {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+}
+
+.wpsg-checkbox {
+  accent-color: #3b82f6;
+  transform: scale(1.1);
+}
+
+.wpsg-button-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.wpsg-button-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.wpsg-notification {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Responzivní design */
+@media (max-width: 768px) {
+  .wpsg-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wpsg-plugin-card {
+    padding: 1rem;
+  }
+
+  .wpsg-plugin-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .wpsg-plugin-badges {
+    margin-top: 0.5rem;
+  }
+}
+
+/* Dark mode podpora */
+@media (prefers-color-scheme: dark) {
+  .wpsg-admin-page {
+    background-color: #1f2937;
+    color: #f9fafb;
+  }
+
+  .wpsg-card {
+    background-color: #374151;
+    border-color: #4b5563;
+  }
+
+  .wpsg-plugin-card:hover {
+    background-color: #4b5563;
+  }
+}
+
+/* Animace pro loading stavy */
+.wpsg-loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.wpsg-spinner {
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #3b82f6;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Tooltips */
+.wpsg-tooltip {
+  position: relative;
+  cursor: help;
+}
+
+.wpsg-tooltip:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1f2937;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  z-index: 1000;
+}
+
+/* Přístupnost */
+.wpsg-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus stavy */
+.wpsg-checkbox:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.wpsg-button:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}

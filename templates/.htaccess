@@ -1,0 +1,18 @@
+# Security Guardian Protection
+<Files "wp-security-guardian.php">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Skrýt všechny PHP soubory
+<FilesMatch "\.php$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Povolíme přístup jen pro WordPress
+<FilesMatch "wp-security-guardian\.php$">
+    Order allow,deny
+    Allow from 127.0.0.1
+    Allow from ::1
+</FilesMatch>
